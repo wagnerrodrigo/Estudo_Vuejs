@@ -21,10 +21,12 @@
 
 <script>
 export default {
-  name: 'app',
+  name: 'lv-tarefas',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      titulo: 'lista de tarefa',
+      subtitulo: 'Defina uma descrição',
+      tarefas: []
     }
   }
 }
