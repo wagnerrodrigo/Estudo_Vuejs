@@ -13,15 +13,17 @@
 
     <div v-if="tarefas.length > 0">
       <br>
-      Existem {{tarefas.length}} tarefas.
 
+      Existem {{tarefas.length}} tarefas.
       <ul>
-        <li v-for="tarefa in tarefas"> {{tarefa}}</li>
+        <li v-for="tarefa in tarefas">{{tarefa}}</li>
+        <p>{{total}}</p>
       </ul>
 
+      <button @click="calcula('-')">-</button>
+      <button @click="calcula('+')">+</button>
       <button @click="tarefas = []">Limpar</button>
     </div>
-
   </div>
 </template>
 
@@ -33,14 +35,20 @@ export default {
       titulo: "lista de tarefa",
       subtitulo: "Defina uma descrição",
       tarefa: ["asdf"],
-      tarefas: ["ligar para funlando"]
+      tarefas: ["ligar para funlando"],
+      total: 10
     };
   },
   mounted() {
     setTimeout(() => {
       this.titulo = "Tarefa disponiveis";
-      this.tarefas = ['tardsf','asdfasdf','asdfasdf'];
-    }, 2000);
+      this.tarefas = ["tarefa 1", "tarefa 2", "tarefa 3"];
+    }, 1000);
+  },
+  methods: {
+    calcula(sinal) {
+      this.total = sinal == "-" ? this.total - 1 : this.total + 1;
+    }
   }
 };
 </script>
