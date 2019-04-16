@@ -23,6 +23,9 @@
       <button @click="calcula('-')">-</button>
       <button @click="calcula('+')">+</button>
       <button @click="tarefas = []">Limpar</button>
+
+      <p>Nome inicial: {{nome}} </p>
+      <p>Nome filtrado: {{nome | formataNome}} </p>
     </div>
   </div>
 </template>
@@ -36,7 +39,8 @@ export default {
       subtitulo: "Defina uma descrição",
       tarefa: ["asdf"],
       tarefas: ["ligar para funlando"],
-      total: 10
+      total: 10,
+      nome: 'wagner rodrigo da silva'
     };
   },
   mounted() {
@@ -48,6 +52,17 @@ export default {
   methods: {
     calcula(sinal) {
       this.total = sinal == "-" ? this.total - 1 : this.total + 1;
+    }
+  },
+  filters:{
+    formataNome(valor){
+      console.log('Executando filter')
+      valor = valor.toLowerCase()
+      let corta = valor.split(' ')
+      let resultado = ''
+      for(let nome of corta)
+      resultado += nome.charAt(0).toUpperCase() + nome.slice(1) + ' ' 
+      return resultado
     }
   }
 };
