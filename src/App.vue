@@ -57,11 +57,11 @@ export default {
   filters:{
     formataNome(valor){
       console.log('Executando filter')
-      valor = valor.toLowerCase()
-      let corta = valor.split(' ')
+      valor = valor.toLowerCase() // independente da String esta Maiúscula ou Minúscula, ela sera obrigada a ir para minúscula atraves da propriedade toLowerCase
+      let corta = valor.split(' ') // a propriedade split() e usado no retorno do for para mudar as primeiras letra de minúscula para maiúsculas. OBS sem o ESPAÇO TODAS AS LETRAS FICARAM MAIÚSCULAS
       let resultado = ''
       for(let nome of corta)
-      resultado += nome.charAt(0).toUpperCase() + nome.slice(1) + ' ' 
+      resultado += nome.charAt(0).toUpperCase() + nome.slice(1) + ' ' // ja o essa linha faz é dividir a string passada pelo metodo Data atributo nome  pego o primeiro indice do vetor e coloco maiúsculo
       return resultado
     }
   }
